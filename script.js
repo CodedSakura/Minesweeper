@@ -4,63 +4,7 @@
         body.classList.add("body");
         document.body.appendChild(body);
         return body;
-    })(), grid = [];
-
-    // difficulty selector
-    (function chooseDiff() {
-        let selector = [
-            {
-                text: "Easy (8x8, 10 mines)",
-                size: 8,
-                mines: 10
-            },
-            {
-                text: "Medium (16x16, 40 mines)",
-                size: 16,
-                mines: 40
-            },
-            {
-                text: "Hard (24x24, 99 mines)",
-                size: 24,
-                mines: 99
-            }
-        ], picker = document.createElement("div");
-        body.appendChild(picker);
-        for (let i of selector) {
-            let div = document.createElement("div");
-            picker.appendChild(div);
-            div.classList.add("diff");
-            div.appendChild(document.createTextNode(i.text));
-            div.addEventListener("click", m => {
-                m.preventDefault();
-                if (document.getElementById("gridBody"))
-                    body.removeChild(document.getElementById("gridBody"));
-                createGrid(i.size, i.mines);
-            });
-        }
-    })();
-
-    function createGrid(size, mineCount) {
-        let gridBody = document.createElement("div");
-        gridBody.id = "gridBody";
-        body.appendChild(gridBody);
-        for (let y = 0; y < size; y++) {
-            grid.push([]);
-            let row = document.createElement("div");
-            row.classList.add("row");
-            gridBody.appendChild(row);
-            //TODO: make a horizontal div
-            for (let x = 0; x < size; x++) {
-                let tile = document.createElement("div");
-                tile.classList.add("tile");
-                tile.style.width = `${640 / size}px`;
-                tile.style.height = `${640 / size}px`;
-                row.appendChild(tile);
-                grid[y].push(new Tile(x, y, tile));
-                //TODO: do things to `elem`
-            }
-        }
-    }
+    })(), grid = [], currDiff = 0;
 
     class Tile {
         constructor(x, y, elem) {
@@ -78,6 +22,69 @@
 
         rightclick() {
             //TODO: implement flags
+        }
+    }
+
+    // difficulty selector
+    (function chooseDiff() {
+        let selector = [
+                {
+                    text: "Easy (8x8, 10 mines)",
+                    size: 8,
+                    mines: 10
+                },
+                {
+                    text: "Medium (16x16, 40 mines)",
+                    size: 16,
+                    mines: 40
+                },
+                {
+                    text: "Hard (24x24, 99 mines)",
+                    size: 24,
+                    mines: 99
+                }
+            ], picker = document.createElement("div");
+
+        picker.classList.add("right-menu");
+        body.appendChild(picker);
+        let diffSelect = document.createElement("div");
+        picker.appendChild(diffSelect);
+        diffSelect.classList.add("diff-select");
+        diffSelect.appendChild(document.createTextNode(selector[currDiff].text));
+        diffSelect.addEventListener("click", m => {
+            m.preventDefault();
+            currDiff++;
+            currDiff %= selector.length;
+            if (document.getElementById("gridBody"))
+                body.removeChild(document.getElementById("gridBody"));
+            createGrid(selector[currDiff].size, selector[currDiff].mines);
+            diffSelect.removeChild(diffSelect.firstChild);
+            diffSelect.appendChild(document.createTextNode(selector[currDiff].text));
+        });
+        createGrid(selector[currDiff].size, selector[currDiff].mines)
+    })();
+
+    function createGrid(size, mineCount) {
+        let gridBody = document.createElement("div");
+        gridBody.id = "gridBody";
+        gridBody.classList.add("grid");
+        // body.appendChild(gridBody);
+        body.prepend(gridBody);
+        for (let y = 0; y < size; y++) {
+            grid.push([]);
+            let row = document.createElement("div");
+            row.classList.add("row");
+            gridBody.appendChild(row);
+            //TODO: make a horizontal div
+            for (let x = 0; x < size; x++) {
+                let tile = document.createElement("div");
+                tile.classList.add("tile");
+                tile.style.width = `${640 / size}px`;
+                tile.style.height = `${640 / size}px`;
+                row.appendChild(tile);
+                grid[y].push(new Tile(x, y, tile));
+                //TODO: do things to `elem`
+            }
         }
     }
 

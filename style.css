@@ -1,15 +1,15 @@
 .body {
     border: 2px solid red;
-    width: 800px;
-    float: left;
+    width: 1000px;
+    /*float: left;*/
+    /*display: inline-block;*/
 }
 
-.diff {
+.diff-select {
     padding: 10px;
     border: 2px solid green;
     margin: 1px;
     text-align: center;
-    /*float: right;*/
 }
 
 .row {
@@ -20,4 +20,14 @@
     float: left;
     background: #888888;
     box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.5), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+}
+
+.right-menu {
+    float: left;
+    display: inline-block;
+    border: 2px solid green;
+}
+
+.grid {
+    display: inline-block;
 }
