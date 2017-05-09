@@ -12,10 +12,6 @@
     text-align: center;
 }
 
-.row {
-    float: left;
-}
-
 .tile {
     float: left;
     background: #888888;
@@ -23,11 +19,14 @@
 }
 
 .right-menu {
-    float: left;
+    float: right;
     display: inline-block;
-    border: 2px solid green;
 }
 
 .grid {
+    display: inline-block;
+}
+
+#gridBody {
     display: inline-block;
 }
