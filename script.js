@@ -65,19 +65,17 @@
     })();
 
     function createGrid(size, mineCount) {
-        let gridBody = document.createElement("div");
+        let gridBody = document.createElement("table");
         gridBody.id = "gridBody";
-        gridBody.classList.add("grid");
         // body.appendChild(gridBody);
         body.prepend(gridBody);
         for (let y = 0; y < size; y++) {
             grid.push([]);
-            let row = document.createElement("div");
-            row.classList.add("row");
+            let row = document.createElement("tr");
             gridBody.appendChild(row);
             //TODO: make a horizontal div
             for (let x = 0; x < size; x++) {
-                let tile = document.createElement("div");
+                let tile = document.createElement("td");
                 tile.classList.add("tile");
                 tile.style.width = `${640 / size}px`;
                 tile.style.height = `${640 / size}px`;
