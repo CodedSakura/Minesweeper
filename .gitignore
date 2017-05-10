@@ -1,0 +1,6 @@
+node_modules/
+.idea/
+public/css/*.css
+public/css/*.map
+public/js/*.js
+public/js/*.map
