@@ -21,12 +21,12 @@
         }
 
         leftClick() {
-            console.log("left click, tile ", this.x, this.y, "; mine ", this.mine, "; value ", this.value);
+            console.log("left, tile ", this.x, this.y, "; mine ", this.mine, "; value ", this.value);
             //TODO: implement left-clicking a tile
         }
 
         rightClick() {
-            console.log("right click, tile ", this.x, this.y, "; mine ", this.mine, "; value ", this.value);
+            console.log("right, tile ", this.x, this.y, "; mine ", this.mine, "; value ", this.value);
             //TODO: implement flags
         }
     }
@@ -77,7 +77,7 @@
             m.preventDefault();
         });
 
-        createGrid(selector[currDiff].size, selector[currDiff].mines)
+        createGrid(selector[currDiff].size, selector[currDiff].mines);
     })();
 
     function createGrid(size, mineCount) {
@@ -100,7 +100,7 @@
                     grid[index[0]][index[1]].leftClick();
                     m.preventDefault();
                 });
-                tile.addEventListener("context-menu", m => {
+                tile.addEventListener("contextmenu", m => {
                     let index = iop2D(grid, {elem: m.target});
                     grid[index[0]][index[1]].rightClick();
                     m.preventDefault();
@@ -130,9 +130,9 @@
 let dragActivate = (() => {
     return () => {
 
-        let main = () => {
+        let _main = () => {
 
-        }
+        };
 
         _main();
         return {
