@@ -1,6 +1,6 @@
 createGrid = require("../Grid/create.js");
 
-module.exports = (body, currDiff, grid, gridBody) => {
+module.exports = (body, currDiff, gridBody) => {
     let selector = [
         {
             text: "Easy (8x8, 10 mines)",
@@ -17,33 +17,44 @@ module.exports = (body, currDiff, grid, gridBody) => {
             size: 24,
             mines: 99
         }
-    ], picker = document.createElement("div");
+    ], picker = document.createElement("div"), globalGridProp, makeGrid = currDiff => {
+        globalGridProp = createGrid(gridBody, selector[currDiff].size, selector[currDiff].mines, timer);
+    };
 
     picker.classList.add("right-menu");
     body.appendChild(picker);
 
     let diffSelect = document.createElement("div"),
-        reset = document.createElement("div");
+        reset = document.createElement("div"),
+        timer = document.createElement("div");
 
     picker.appendChild(diffSelect);
-    diffSelect.classList.add("diff-select");
+    diffSelect.classList.add("button");
     diffSelect.appendChild(document.createTextNode(selector[currDiff].text));
     diffSelect.addEventListener("click", m => {
+        clearInterval(globalGridProp.timer);
+        timer.innerText = "--:--";
         currDiff++;
         currDiff %= selector.length;
-        createGrid(selector[currDiff].size, selector[currDiff].mines);
+        makeGrid(currDiff);
         diffSelect.removeChild(diffSelect.firstChild);
         diffSelect.appendChild(document.createTextNode(selector[currDiff].text));
         m.preventDefault();
     });
 
     picker.appendChild(reset);
-    reset.classList.add("reset");
+    reset.classList.add("button");
     reset.appendChild(document.createTextNode("Reset"));
     reset.addEventListener("click", m => {
-        createGrid(grid, gridBody, selector[currDiff].size, selector[currDiff].mines);
+        clearInterval(globalGridProp.timer);
+        timer.innerText = "--:--";
+        makeGrid(currDiff);
         m.preventDefault();
     });
 
-    createGrid(grid, gridBody, selector[currDiff].size, selector[currDiff].mines);
+    picker.appendChild(timer);
+    timer.classList.add("clock");
+    timer.innerText = "--:--";
+
+    makeGrid(currDiff);
 };

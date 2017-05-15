@@ -30,7 +30,7 @@ gulp.task('default', function() {
 gulp.task('watch', function() {
 
     gulp.start(['css', 'webpack']);
-    gulp.watch(['./src/css/**/*.scss', './src/css/*.scss'],  ['css']     );
+    gulp.watch(['./src/sass/**/*.scss', './src/sass/*.scss'],  ['css']     );
     gulp.watch(['./src/js/**/*.js', './src/js/*.js'],      ['webpack'] );
     broSync.init({
         server: {

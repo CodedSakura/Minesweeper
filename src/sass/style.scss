@@ -1,0 +1,60 @@
+@import "digital-7";
+
+.body {
+  width: 870px;
+  background: #AAA;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px #444;
+  -webkit-user-select: none;
+}
+
+.grid {
+  margin: 10px;
+  display: inline-block;
+  cursor: default;
+}
+
+.right-menu {
+  margin: 10px 10px 10px 0;
+  float: right;
+  display: inline-block;
+  width: 200px;
+}
+
+.button {
+  background: linear-gradient(#AAA, #999);
+  box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.5), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+  height: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.button:active {
+  background: linear-gradient(#999, #AAA);
+  box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.5), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+  height: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.clock {
+  background: linear-gradient(#AAA, #999);
+  box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.5), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+  height: 60px;
+  padding: 10px;
+  text-align: center;
+  font: 60px Digital-7 Mono, monospace;
+}
+
+.tile {
+  float: left;
+  background: linear-gradient(#666, #555);
+  box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.5), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.tile-pressed {
+  background: linear-gradient(#555, #666);
+}
+
+@import "tiles";

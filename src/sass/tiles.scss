@@ -1,0 +1,68 @@
+.tile-seen {
+  background: #888;
+  text-align: center;
+}
+
+.tile-0 {
+  color: #888;
+}
+
+.tile-1 {
+  color: #03F;
+}
+
+.tile-2 {
+  color: #090;
+}
+
+.tile-3 {
+  color: #F30;
+}
+
+.tile-4 {
+  color: #006;
+}
+
+.tile-5 {
+  color: #600;
+}
+
+.tile-6 {
+  color: #9CF;
+}
+
+.tile-7 {
+  color: #000;
+}
+
+.tile-8 {
+  color: #555;
+}
+
+.tile-flag {
+  color: #000;
+}
+
+.tile-mine {
+  color: #000;
+}
+
+.tile-mine-false {
+  color: #000;
+  position: relative;
+}
+
+.tile-mine-false:after {
+  position: absolute;
+  top: -0.3em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #F00;
+  content: "\d7";
+  font-size: 2em;
+}
+
+.tile-mine-clicked {
+  background: red;
+}
