@@ -17,8 +17,11 @@ let iop2D = (array, input) => { // index of object in a 2D array
         let counter = 0;
         for (let i of grid) for (let j of i) if (j.mine) counter++;
         return counter;
-    },
-    populate = (grid, clickX, clickY, mineCount) => {
+    }, countFlags = grid => {
+        let counter = 0;
+        for (let i of grid) for (let j of i) if (j.flag) counter++;
+        return counter;
+    }, populate = (grid, clickX, clickY, mineCount) => {
         while (countMines(grid) < mineCount) {
             let randomPos = [Math.floor(Math.random() * grid.length), Math.floor(Math.random() * grid.length)];
             grid[randomPos[0]][randomPos[1]].mine = true;
@@ -38,5 +41,6 @@ let iop2D = (array, input) => { // index of object in a 2D array
 
 module.exports = {
     iop2D: iop2D,
-    populate: populate
+    populate: populate,
+    countFlags: countFlags
 };

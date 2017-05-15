@@ -46,11 +46,13 @@
   font: 60px Digital-7 Mono, monospace;
 }
 
-.tile {
-  float: left;
-  background: linear-gradient(#666, #555);
+.mines {
+  background: linear-gradient(#AAA, #999);
   box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.5), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+  height: 60px;
+  padding: 10px;
   text-align: center;
+  font: 60px Digital-7 Mono, monospace;
 }
 
 .tile-pressed {

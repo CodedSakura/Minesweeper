@@ -82,6 +82,8 @@ class Tile {
             this.elem.innerText = "";
             this.flag = false;
         }
+        let flags = require("../Grid/utils.js").countFlags(this.grid);
+        this.gridProp.mineCountDiv.innerText = `${flags < 10 ? "0" + flags : flags}/${this.gridProp.mineCount}`;
     }
 
     forEachNeighbour(func) {

@@ -3,14 +3,15 @@ let utils = require("./utils.js");
 
 let mouseDown = false;
 
-function createGrid(gridBody, size, mineCount, timerDiv) {
+function createGrid(gridBody, size, mineCount, timerDiv, mineCountDiv) {
     let grid = [], globalGridProp = {
         clicked: false,
         mineCount: mineCount,
         gameOver: false,
         time: 0,
         timer: null,
-        timerDiv: timerDiv
+        timerDiv: timerDiv,
+        mineCountDiv: mineCountDiv
     };
 
     while (gridBody.hasChildNodes()) {

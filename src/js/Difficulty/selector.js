@@ -18,7 +18,7 @@ module.exports = (body, currDiff, gridBody) => {
             mines: 99
         }
     ], picker = document.createElement("div"), globalGridProp, makeGrid = currDiff => {
-        globalGridProp = createGrid(gridBody, selector[currDiff].size, selector[currDiff].mines, timer);
+        globalGridProp = createGrid(gridBody, selector[currDiff].size, selector[currDiff].mines, timer, mines);
     };
 
     picker.classList.add("right-menu");
@@ -26,7 +26,8 @@ module.exports = (body, currDiff, gridBody) => {
 
     let diffSelect = document.createElement("div"),
         reset = document.createElement("div"),
-        timer = document.createElement("div");
+        timer = document.createElement("div"),
+        mines = document.createElement("div");
 
     picker.appendChild(diffSelect);
     diffSelect.classList.add("button");
@@ -37,6 +38,7 @@ module.exports = (body, currDiff, gridBody) => {
         currDiff++;
         currDiff %= selector.length;
         makeGrid(currDiff);
+        mines.innerText = "00/" + globalGridProp.mineCount;
         diffSelect.removeChild(diffSelect.firstChild);
         diffSelect.appendChild(document.createTextNode(selector[currDiff].text));
         m.preventDefault();
@@ -49,12 +51,17 @@ module.exports = (body, currDiff, gridBody) => {
         clearInterval(globalGridProp.timer);
         timer.innerText = "--:--";
         makeGrid(currDiff);
+        mines.innerText = "00/" + globalGridProp.mineCount;
         m.preventDefault();
     });
 
     picker.appendChild(timer);
     timer.classList.add("clock");
     timer.innerText = "--:--";
+
+    picker.appendChild(mines);
+    mines.classList.add("mines");
+    mines.innerText = "00/10";
 
     makeGrid(currDiff);
 };
